@@ -14,6 +14,6 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("items", DBConnection.getAllItems());
-        request.getRequestDispatcher("home.jsp").forward(request,response);
+        request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 }

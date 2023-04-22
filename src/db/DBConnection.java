@@ -15,24 +15,23 @@ public class DBConnection {
     static {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection= DriverManager.getConnection
+            connection = DriverManager.getConnection
                     ("jdbc:mysql://localhost:3306/bitlab_shop",
                             "zhasik",
                             "bitlab123");
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static ArrayList<Item> getAllItems(){
-        ArrayList<Item> items=new ArrayList<>();
+    public static ArrayList<Item> getAllItems() {
+        ArrayList<Item> items = new ArrayList<>();
         try {
-            PreparedStatement statement=connection.prepareStatement
+            PreparedStatement statement = connection.prepareStatement
                     ("SELECT * FROM items");
-            ResultSet resultSet=statement.executeQuery();
-            while (resultSet.next()){
-                Item item=new Item();
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Item item = new Item();
                 item.setId(resultSet.getLong("id"));
                 item.setName(resultSet.getString("name"));
                 item.setDescription(resultSet.getString("description"));
@@ -40,21 +39,20 @@ public class DBConnection {
                 items.add(item);
             }
             statement.close();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return items;
     }
 
-    public static ArrayList<User> getAllUsers(){
-        ArrayList<User> users=new ArrayList<>();
+    public static ArrayList<User> getAllUsers() {
+        ArrayList<User> users = new ArrayList<>();
         try {
-            PreparedStatement statement= connection.prepareStatement
+            PreparedStatement statement = connection.prepareStatement
                     ("SELECT * FROM users");
-            ResultSet resultSet=statement.executeQuery();
-            while (resultSet.next()){
-                User user=new User();
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                User user = new User();
                 user.setId(resultSet.getLong("id"));
                 user.setFullName(resultSet.getString("full_name"));
                 user.setEmail(resultSet.getString("email"));
@@ -62,30 +60,28 @@ public class DBConnection {
                 users.add(user);
             }
             statement.close();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return users;
     }
 
-    public static User getUser(String email){
-        User user=null;
+    public static User getUser(String email) {
+        User user = null;
         try {
-            PreparedStatement statement= connection.prepareStatement
+            PreparedStatement statement = connection.prepareStatement
                     ("SELECT * FROM users WHERE email=?");
-            statement.setString(1,email);
-            ResultSet resultSet=statement.executeQuery();
-            while (resultSet.next()){
-                user=new User();
+            statement.setString(1, email);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                user = new User();
                 user.setId(resultSet.getLong("id"));
                 user.setFullName(resultSet.getString("full_name"));
                 user.setEmail(resultSet.getString("email"));
                 user.setPassword(resultSet.getString("password"));
             }
             statement.close();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return user;

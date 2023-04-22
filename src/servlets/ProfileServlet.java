@@ -9,17 +9,16 @@ import jakarta.servlet.http.HttpSession;
 import moduls.User;
 
 import java.io.IOException;
+
 @WebServlet(value = "/profile")
 public class ProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session=request.getSession();
+        HttpSession session = request.getSession();
         User currentUser = (User) session.getAttribute("currentUser");
-        if (currentUser!=null){
-            request.getRequestDispatcher("profile.jsp").forward(request,response);
-        }
-
-        else {
+        if (currentUser != null) {
+            request.getRequestDispatcher("profile.jsp").forward(request, response);
+        } else {
             response.sendRedirect("/login");
         }
     }

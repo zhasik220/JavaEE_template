@@ -8,6 +8,7 @@ public class Item {
 
     public Item() {
     }
+
     public Item(Long id, String name, String description, double price) {
         this.id = id;
         this.name = name;

@@ -3,14 +3,15 @@
 <html>
 <head>
     <title>HomePage</title>
-    <%@include file="head.jsp"%>
+    <%@include file="head.jsp" %>
 </head>
 <body>
-<%@include file="navbar.jsp"%>
+<%@include file="navbar.jsp" %>
 <div class="container">
     <div class="row">
         <div class="col-12 text-center">
-                <h1>Hello <%=user.getFullName()%></h1>
+            <h1>Hello <%=user.getFullName()%>
+            </h1>
         </div>
     </div>
 </div>
